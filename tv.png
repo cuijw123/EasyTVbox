@@ -4,6 +4,7 @@ CCTV2,http://171.38.107.33:8282/tsfile/live/0002_1.m3u8?key=txiptv&playlive=1&au
 CCTV3,http://171.38.107.33:8282/tsfile/live/1014_1.m3u8?key=txiptv&playlive=1&authid=0
 CCTV4,http://171.38.107.33:8282/tsfile/live/0004_1.m3u8?key=txiptv&playlive=1&authid=0
 CCTV5,http://171.38.107.33:8282/tsfile/live/1016_1.m3u8?key=txiptv&playlive=1&authid=0
+CCTV5+,http://171.38.107.33:8282/tsfile/live/1028_1.m3u8?key=txiptv&playlive=1&authid=0
 CCTV6,http://171.38.107.33:8282/tsfile/live/1017_1.m3u8?key=txiptv&playlive=1&authid=0
 CCTV7,http://171.38.107.33:8282/tsfile/live/0007_1.m3u8?key=txiptv&playlive=1&authid=0
 CCTV8,http://171.38.107.33:8282/tsfile/live/1019_1.m3u8?key=txiptv&playlive=1&authid=0
@@ -16,7 +17,6 @@ CCTV13,http://171.38.107.33:8282/tsfile/live/1024_1.m3u8?key=txiptv&playlive=1&a
 CCTV14,http://171.38.107.33:8282/tsfile/live/1026_1.m3u8?key=txiptv&playlive=1&authid=0
 CCTV15,http://171.38.107.33:8282/tsfile/live/1025_1.m3u8?key=txiptv&playlive=1&authid=0
 CCTV17,http://171.38.107.33:8282/tsfile/live/1029_1.m3u8?key=txiptv&playlive=1&authid=0
-CCTV5+,http://171.38.107.33:8282/tsfile/live/1028_1.m3u8?key=txiptv&playlive=1&authid=0
 广东卫视,http://171.38.107.33:8282/tsfile/live/1031_1.m3u8?key=txiptv&playlive=1&authid=0
 珠江台,http://171.38.107.33:8282/tsfile/live/1000_1.m3u8?key=txiptv&playlive=1&authid=0
 珠江台,http://171.38.107.33:8282/tsfile/live/1060_1.m3u8?key=txiptv&playlive=1&authid=0
