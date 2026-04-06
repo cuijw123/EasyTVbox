@@ -1,11 +1,11 @@
 {
-	"spider": "https://gh-proxy.com/github.com/EasyXC/EasyTVbox/raw/main/%E6%9F%92%E8%B1%AA.jar",
+	"spider": "https://gh-proxy.com/raw.githubusercontent.com/EasyXC/EasyTVbox/main/jar/柒豪.jar",
 	"warningText": "Easy提醒：所有资源来于网络，仅作学习交流测试使用！",
-	"logo": "https://gh-proxy.com/raw.githubusercontent.com/EasyXC/EasyTVbox/main/50f90ae3968d19487daf69cf022699be.gif",
+	"logo": "https://gh-proxy.com/raw.githubusercontent.com/EasyXC/EasyTVbox/main/images/50f90ae3968d19487daf69cf022699be.gif",
 	"lives": [{
 			"name": "EasyTV",
 			"type": 0,
-			"url": "https://gh-proxy.com/raw.githubusercontent.com/EasyXC/EasyTVbox/main/tv.png",
+			"url": "https://gh-proxy.com/raw.githubusercontent.com/EasyXC/EasyTVbox/main/api/tv.png",
 			"timeout": 10
 		},
 		{
@@ -64,24 +64,9 @@
 			"name": "弹幕配置",
 			"type": 3,
 			"api": "csp_Huban",
-			"jar": "https://gh-proxy.com/raw.githubusercontent.com/EasyXC/EasyTVbox/main/HubanTCR.jar",
+			"jar": "https://gh-proxy.com/https://raw.githubusercontent.com/EasyXC/EasyTVbox/main/jar/HubanTCR.jar",
 			"searchable": 0,
 			"changeable": 0
-		},
-
-		{
-			"key": "藤藤",
-			"name": "腾讯丨天神4K",
-			"type": 3,
-			"api": "https://gitee.com/cpu-iy/lib/raw/master/lib/drpy2.min.js",
-			"ext": "https://gitee.com/cpu-iy/iy/raw/master/lib/%E8%97%A4%E8%97%A4.png"
-		},
-		{
-			"key": "茫茫",
-			"name": "芒果丨天神4K",
-			"type": 3,
-			"api": "https://gitee.com/cpu-iy/lib/raw/master/lib/drpy2.min.js",
-			"ext": "https://gitee.com/cpu-iy/iy/raw/master/lib/%E8%8C%AB%E8%8C%AB.png"
 		},
 
 		{
@@ -514,15 +499,6 @@
 			}
 		},
 		{
-			"key": "移动|天维",
-			"name": "移动丨有4K",
-			"type": 3,
-			"jar": "https://gitee.com/tianwikeji/jar/raw/master/YD.jar",
-			"api": "csp_YDjisu",
-			"searchable": 1,
-			"changeable": 1
-		},
-		{
 			"key": "yim爱影视",
 			"name": "盈盈丨有4K",
 			"type": 3,
@@ -615,44 +591,6 @@
 			"api": "csp_AppGet",
 			"jar": "./jars/MOdadasdasdasdas.png",
 			"ext": "AZMWjtBVHqg1eqc24zPBCnp+8nUMJ1DhABffeziVNB/hZ1AHDr9HynmQ7Hea0MJa9TQvImvwo+VcBjCulptXIj6796jroFgU16XtcGODMtfDJ8RJjrEa+2QJ1eVamXkB+N3GrowCHjQsVd5GK4QAxVeW7oVMa/kmxFpF4XWFHhz5YGcXOSxIhznhRlZln5Ap8sol6sjWUfBhblNbLgjDBzKdTxu/NjbUZFhO8y6IP8SZhvrY0CxMo8/Kp6AnCYGRyA=="
-		},
-
-		{
-			"key": "yiwu腾讯备",
-			"name": "腾讯丨yw4K",
-			"type": 3,
-			"api": "https://gitee.com/yiwu369/6758/raw/master/JS/drpy2.min.js",
-			"searchable": 1,
-			"changeable": 1,
-			"ext": "https://17264.kstore.space/%E8%85%BE%E8%85%BE.js"
-		},
-		{
-			"key": "yiwu芒果备",
-			"name": "芒果丨yw4K",
-			"type": 3,
-			"api": "https://gitee.com/yiwu369/6758/raw/master/JS/drpy2.min.js",
-			"searchable": 1,
-			"changeable": 1,
-			"ext": "https://17264.kstore.space/%E8%8A%92%E6%9E%9C.js"
-		},
-		{
-			"key": "hajim-ltby1新腾极4k",
-			"name": "腾讯丨hj4K",
-			"type": 3,
-			"api": "https://gitee.com/ltby1/one/raw/master/lib/drpy2.min.js",
-			"searchable": 1,
-			"quickSearch": 1,
-			"filterable": 1,
-			"order_num": 0,
-			"changeable": 0,
-			"ext": "http://8.148.229.212:802/灵幻4k/lib/灵幻4kTX.js"
-		},
-		{
-			"key": "hajim-ltby1芒果1弹幕",
-			"name": "芒果丨hj4K",
-			"type": 3,
-			"api": "https://gitee.com/ltby1/one/raw/master/lib/drpy2.min.js",
-			"ext": "http://8.148.229.212:802/灵幻4k/lib/灵幻4KMG.js"
 		},
 		{
 			"key": "hajim-哔了视频",
@@ -852,15 +790,6 @@
 			"ext": "https://vip.wwgz.cn:5200"
 		},
 		{
-			"key": "柠檬",
-			"name": "柠檬｜蓝光",
-			"type": 3,
-			"api": "csp_Nmvod",
-			"playerType": 2,
-			"jar": "https://gitee.com/tianwikeji/jar/raw/master/柠檬.jar",
-			"ext": "7lj763gg402i7942503g839jg74h8h88highi40799jh6i6k454419l0l5184k0g549h0kg2i01i838i2h42g891lgg1"
-		},
-		{
 			"key": "热播影视",
 			"name": "热播｜蓝光",
 			"type": 3,
@@ -963,16 +892,6 @@
 			"ext": "http://m51.gotto.top/api.php/v1.vod"
 		},
 		{
-			"key": "lzxw-4Kvm影视",
-			"name": "恶魔｜蓝光",
-			"type": 3,
-			"api": "csp_XBPQ",
-			"searchable": 1,
-			"quickSearch": 1,
-			"filterable": 1,
-			"ext": "https://gitee.com/lzxw66/lzxw9/raw/master/json/4kvm.json"
-		},
-		{
 			"key": "lzxw-Wwys",
 			"name": "旺仔｜蓝光",
 			"type": 3,
@@ -1016,19 +935,6 @@
 			"name": "坚果｜蓝光4k",
 			"type": 3,
 			"api": "csp_AppJg"
-		},
-		{
-			"key": "茉莉",
-			"name": "茉莉｜蓝光4k",
-			"type": 3,
-			"searchable": 1,
-			"changeable": 1,
-			"api": "csp_AppGet",
-			"ext": {
-				"site": "https://gitee.com/wmmoliill/wimg/raw/master/img/bk/9.txt",
-				"dataKey": "88689667dce61725",
-				"dataIv": "88689667dce61725"
-			}
 		},
 		{
 			"key": "️xsa爱看Bot",
@@ -1589,24 +1495,6 @@
 			"type": 3,
 			"api": "http://rihou.cc:88/js/drpy2.min.js",
 			"ext": "http://rihou.cc:88/js/果果.js"
-		},
-		{
-			"key": "腾讯备",
-			"name": "腾讯*天神备",
-			"type": 3,
-			"api": "https://gitee.com/yiwu369/6758/raw/master/JS/drpy2.min.js",
-			"searchable": 1,
-			"changeable": 1,
-			"ext": "https://17264.kstore.space/%E8%85%BE%E8%85%BE.js"
-		},
-		{
-			"key": "芒果备",
-			"name": "芒果*天神备",
-			"type": 3,
-			"api": "https://gitee.com/yiwu369/6758/raw/master/JS/drpy2.min.js",
-			"searchable": 1,
-			"changeable": 1,
-			"ext": "https://17264.kstore.space/%E8%8A%92%E6%9E%9C.js"
 		},
 		{
 			"key": "csp_Qiyou",
