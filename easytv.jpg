@@ -83,7 +83,7 @@
 		},
 		{
 			"key": "墨C-drpyS_木偶[盘]",
-			"name": "木偶丨原画4K",
+			"name": "木偶💯原画4K",
 			"type": 4,
 			"api": "http://115.191.55.109:9097/api/木偶[盘]?pwd=50721480be241243",
 			"searchable": 1,
@@ -96,7 +96,7 @@
 		},
 		{
 			"key": "墨C-drpyS_立播[盘]",
-			"name": "立播丨原画4K",
+			"name": "立播💯原画4K",
 			"type": 4,
 			"api": "http://115.191.55.109:9097/api/立播[盘]?pwd=50721480be241243",
 			"searchable": 1,
@@ -110,7 +110,7 @@
 		},
 		{
 			"key": "墨C-drpyS_欧哥[盘]",
-			"name": "欧哥丨原画4K",
+			"name": "欧哥💯原画4K",
 			"type": 4,
 			"api": "http://115.191.55.109:9097/api/欧哥[盘]?pwd=50721480be241243",
 			"searchable": 1,
@@ -122,7 +122,7 @@
 		},
 		{
 			"key": "墨C-drpyS_虎斑[盘]",
-			"name": "虎斑丨原画4K",
+			"name": "虎斑💯原画4K",
 			"type": 4,
 			"api": "http://115.191.55.109:9097/api/虎斑[盘]?pwd=50721480be241243",
 			"searchable": 1,
@@ -134,7 +134,7 @@
 		},
 		{
 			"key": "墨C-drpyS_至臻[盘]",
-			"name": "至臻丨原画4K",
+			"name": "至臻💯原画4K",
 			"type": 4,
 			"api": "http://115.191.55.109:9097/api/至臻[盘]?pwd=50721480be241243",
 			"searchable": 1,
@@ -146,7 +146,7 @@
 		},
 		{
 			"key": "jianan",
-			"name": "按安丨线路4K",
+			"name": "按安💯线路4K",
 			"type": 4,
 			"api": "http://box.52xiaobai.cn/video/jianan?token=50721480be241243",
 			"searchable": 1,
@@ -156,7 +156,7 @@
 		},
 		{
 			"key": "csp_T4_摸鱼",
-			"name": "T4·丨限时4K",
+			"name": "T4·💯限时4K",
 			"type": 4,
 			"api": "http://我不是.摸鱼儿.com/api/feng/moyu.php?token=moyu996",
 			"playUrl": "",
@@ -166,17 +166,24 @@
 		},
 		{
 			"key": "九灵移动",
-			"name": "九灵丨移动4K",
+			"name": "九灵💯移动4K",
 			"type": 3,
 			"jar": "https://17264.kstore.space/yunY.jar",
 			"api": "csp_YDjisu",
 			"searchable": 1,
 			"changeable": 1
 		},
-
+		{
+			"key": "墨C-baidu_cloud",
+			"name": "百度💯原画4K",
+			"type": 4,
+			"api": "http://115.191.55.109:7023/api/tvbox/drive/baidu?token=7rR2WatVaVGQdxlqCgiyilNePwHb8gMb",
+			"searchable": 1,
+			"changeable": 0
+		},
 		{
 			"key": "xsa玩偶",
-			"name": "玩偶丨扫码4K",
+			"name": "玩偶💯扫码4K",
 			"type": 3,
 			"api": "csp_Wogg",
 			"searchable": 1,
@@ -194,7 +201,7 @@
 		},
 		{
 			"key": "xsa快映",
-			"name": "快英丨扫码4K",
+			"name": "快英💯扫码4K",
 			"type": 3,
 			"api": "csp_PanWebShare",
 			"searchable": 1,
@@ -211,7 +218,7 @@
 		},
 		{
 			"key": "xsa木偶",
-			"name": "木偶丨扫码4K",
+			"name": "木偶💯扫码4K",
 			"type": 3,
 			"api": "csp_PanWebShare",
 			"searchable": 1,
@@ -230,7 +237,7 @@
 		},
 		{
 			"key": "xsa蜡笔",
-			"name": "蜡壁丨扫码4K",
+			"name": "蜡壁💯扫码4K",
 			"type": 3,
 			"api": "csp_PanWebShare",
 			"searchable": 1,
@@ -253,7 +260,7 @@
 		},
 		{
 			"key": "xsa至臻",
-			"name": "至榛丨扫码4K",
+			"name": "至榛💯扫码4K",
 			"type": 3,
 			"api": "csp_PanWebShare",
 			"searchable": 1,
@@ -274,7 +281,7 @@
 		},
 		{
 			"key": "xsa多多",
-			"name": "多多丨扫码4K",
+			"name": "多多💯扫码4K",
 			"type": 3,
 			"api": "csp_PanWebShare",
 			"searchable": 1,
@@ -292,7 +299,7 @@
 		},
 		{
 			"key": "xsa欧哥",
-			"name": "呕哥丨扫码4K",
+			"name": "呕哥💯扫码4K",
 			"type": 3,
 			"api": "csp_PanWebShare",
 			"searchable": 1,
@@ -311,7 +318,7 @@
 		},
 		{
 			"key": "xs虎斑",
-			"name": "虎斑丨扫码4K",
+			"name": "虎斑💯扫码4K",
 			"type": 3,
 			"api": "csp_PanWebShare",
 			"searchable": 1,
@@ -328,7 +335,7 @@
 		},
 		{
 			"key": "xs闪电",
-			"name": "闪点丨扫码4K",
+			"name": "闪点💯扫码4K",
 			"type": 3,
 			"api": "csp_PanWebShare",
 			"searchable": 1,
@@ -344,7 +351,7 @@
 		},
 		{
 			"key": "xs雷鲸",
-			"name": "蕾鲸丨扫码4K",
+			"name": "蕾鲸💯扫码4K",
 			"type": 3,
 			"api": "csp_PanWebShareCloudLJ",
 			"searchable": 1,
@@ -367,7 +374,7 @@
 		},
 		{
 			"key": "xs海绵",
-			"name": "海绵丨扫码4K",
+			"name": "海绵💯扫码4K",
 			"type": 3,
 			"api": "csp_PanWebShareCloudHM",
 			"searchable": 1,
@@ -389,7 +396,7 @@
 		},
 		{
 			"key": "xs夸父",
-			"name": "夸父丨扫码4K",
+			"name": "夸父💯扫码4K",
 			"type": 3,
 			"api": "csp_PanWebShareCloudKF",
 			"searchable": 1,
@@ -410,7 +417,7 @@
 		},
 		{
 			"key": "xs123",
-			"name": "123·丨扫码4K",
+			"name": "123·💯扫码4K",
 			"type": 3,
 			"api": "csp_PanWebShareCloud123",
 			"searchable": 1,
@@ -432,7 +439,7 @@
 
 		{
 			"key": "xs即刻",
-			"name": "即刻丨扫码4K",
+			"name": "即刻💯扫码4K",
 			"type": 3,
 			"api": "csp_Jike",
 			"style": {
@@ -443,7 +450,7 @@
 
 		{
 			"key": "裤佬-EmbyJS",
-			"name": "EMBY丨测试4K",
+			"name": "EMBY💯测试4K",
 			"type": 3,
 			"api": "https://mpimg.cn/down.php/40d30fe3d9671e0d700f1c272bb20aaa.js",
 			"searchable": 1,
@@ -452,7 +459,7 @@
 		},
 		{
 			"key": "墨c-drpyS_人人影视[优]",
-			"name": "人人丨测试4K",
+			"name": "人人💯测试4K",
 			"type": 4,
 			"api": "http://115.191.55.109:9097/api/人人影视[优]?pwd=50721480be241243",
 			"searchable": 1,
@@ -466,7 +473,7 @@
 		},
 		{
 			"key": "suisui-岁-至臻清风-7",
-			"name": "清风丨测试4K",
+			"name": "清风💯测试4K",
 			"type": 4,
 			"api": "http://sspa8.top:8100/php/清风.php",
 			"searchable": 1,
@@ -475,7 +482,7 @@
 		},
 		{
 			"key": "MOChen-drpyS_泥视频[优]",
-			"name": "泥泥丨有4K",
+			"name": "泥泥🔍️有4K",
 			"type": 4,
 			"api": "http://115.191.55.109:9097/api/泥视频[优]?pwd=50721480be241243",
 			"searchable": 1,
@@ -489,7 +496,7 @@
 		},
 		{
 			"key": "KUlao永乐JS",
-			"name": "永乐丨有4K",
+			"name": "永乐🔍️有4K",
 			"type": 3,
 			"api": "https://mpimg.cn/down.php/0338609bd59d7b27226f5a269ec97936.js",
 			"style": {
@@ -500,7 +507,7 @@
 		},
 		{
 			"key": "yim爱影视",
-			"name": "盈盈丨有4K",
+			"name": "盈盈🔍️有4K",
 			"type": 3,
 			"api": "csp_AppGet",
 			"changeable": "1",
@@ -511,7 +518,7 @@
 		},
 		{
 			"key": "yim金牌csp_Jpys",
-			"name": "金牌丨有4K",
+			"name": "金牌🔍️有4K",
 			"type": 3,
 			"api": "csp_AppGet",
 			"changeable": "1",
@@ -520,14 +527,7 @@
 			"ext": "https://qj3.ggtvb.cc|eecbio48dsq13kkk|122",
 			"jar": "https://img2.gelonghui.com/library/28e33-d7f6e0ad-8de5-4829-b42c-bcdeaae1ed42.png;md5;28e33eb59669c994ca140064ad4a1eef"
 		},
-		{
-			"key": "墨C-baidu_cloud",
-			"name": "百度丨原画4K",
-			"type": 4,
-			"api": "http://115.191.55.109:7023/api/tvbox/drive/baidu?token=7rR2WatVaVGQdxlqCgiyilNePwHb8gMb",
-			"searchable": 1,
-			"changeable": 0
-		},
+
 		{
 			"key": "xmi-独家csp_XBPQ2",
 			"name": "独佳｜蓝光",
