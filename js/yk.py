@@ -3,12 +3,14 @@
 # 严禁将其用于任何商业用途，下载后请于 24 小时内删除，搜索结果均来自源站，本人不承担任何责任。
 
 from base.spider import Spider
-from Crypto.Cipher import ARC4,AES
+from Crypto.Cipher import ARC4, AES
 from urllib.parse import quote_plus
 from Crypto.Util.Padding import unpad
-import re,sys,time,uuid,json,base64,urllib3,hashlib,secrets,binascii
+import re, sys, time, uuid, json, base64, urllib3, hashlib, secrets, binascii
+
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 sys.path.append('..')
+
 
 class Spider(Spider):
     headers = {
@@ -17,19 +19,48 @@ class Spider(Spider):
         'Accept-Encoding': "gzip"
     }
     headers2 = {**headers}
-    client_mode,max_client,app_id,pg_url,yry_url,client,base_path,pg_key,yry_key,token,user,pwd,markcode,login_mode,app_name,model,cache_key = 0,2,'','','','','','','','','','','','','','',''
+    client_mode, max_client, app_id, pg_url, yry_url, client, base_path, pg_key, yry_key, token, user, pwd, markcode, login_mode, app_name, model, cache_key = 0, 2, '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''
 
     def init(self, extend=''):
+        # ========== 步骤1: 解析ext参数 ==========
+        ext = {}
         try:
-            ext = json.loads(extend)
+            # 尝试JSON解析
+            parsed = json.loads(extend)
+            if isinstance(parsed, dict):
+                ext = parsed
+            elif isinstance(parsed, str) and (parsed.startswith('http://') or parsed.startswith('https://')):
+                # ext是URL字符串 → 作为CosUrl使用
+                ext['CosUrl'] = parsed
         except Exception:
-            ext = {}
+            # JSON解析失败，若为URL字符串则作为CosUrl使用
+            if isinstance(extend, str) and (extend.startswith('http://') or extend.startswith('https://')):
+                ext['CosUrl'] = extend
+
+        # ========== 步骤2: 获取配置（外置域名 或 远程CosUrl） ==========
+        # 优先使用直接外置的域名
+        if 'pg_url' in ext and 'yry_url' in ext:
+            self.pg_url = ext['pg_url']
+            self.yry_url = ext['yry_url']
+            self.base_path = ext.get('base_path', '')
+            self.pg_key = ext.get('pg_key', '')
+            self.yry_key = ext.get('yry_key', '')
+            self.client = ext.get('client', '')
+            self.login_mode = ext.get('login_mode', 4)
+            self.user = ext.get('username', self.user)
+            self.pwd = ext.get('password', self.pwd)
+            self.markcode = ext.get('markcode', self.markcode)
+            self.app_name = ext.get('app_name', self.app_name)
+            self.model = ext.get('model', self.model)
+            return
+
+        # ========== 步骤3: 远程CosUrl获取配置（原有逻辑） ==========
         self.user = ext.get('username')
         self.pwd = ext.get('password')
         self.markcode = ext.get('markcode')
         self.app_name = ext.get('app_name', 'xiaomi')
         self.model = ext.get('model', 'xiaomi')
-        cos_url = ext.get('CosUrl', 'http://159.75.121.115:9999/yueku/mac1.json')
+        cos_url = ext.get('CosUrl', 'http://2025-1329689796.cos.ap-guangzhou.myqcloud.com/kanke/app1.json')
         self.cache_key = hashlib.md5(cos_url.encode('utf-8')).hexdigest()
         try:
             number1 = 'No00000'
@@ -41,7 +72,8 @@ class Spider(Spider):
             notice = res['msg']['notice']
             main_host = self.decode(notice['content'])
             self.headers2['Authorization'] = self.decode(notice['type'])
-            response = self.post(f'{main_host}?app={self.app_id}', data=payload, headers=self.headers2, verify=False).json()
+            response = self.post(f'{main_host}?app={self.app_id}', data=payload, headers=self.headers2,
+                                 verify=False).json()
             data = response['data']
             maink = self.rc4_decrypt(data['Maink'], number_key)
             self.pg_key = self.rc4_decrypt(data['pg'], maink)
@@ -55,15 +87,17 @@ class Spider(Spider):
             yry_url = self.aes_decrypt(self.base64_decode(yry_raw_url[16:]), aes_key, aes_iv)
             self.base_path = self.rc4_decrypt(data['HOST'])
             self.client = self.rc4_decrypt(data['newClient'])
-            self.login_mode = data.get('Login',4)
+            self.login_mode = data.get('Login', 4)
             self.pg_url = pg_url
             self.yry_url = yry_url
         except Exception:
             self.pg_url = ''
 
     def homeContent(self, filter):
-        if not self.pg_url: return None
-        response = self.fetch(f'{self.pg_url}/api.php/{self.base_path}/Category?{self.sign()}', headers=self.headers2, verify=False).text
+        if not self.pg_url:
+            return None
+        response = self.fetch(f'{self.pg_url}/api.php/{self.base_path}/Category?{self.sign()}', headers=self.headers2,
+                              verify=False).text
         try:
             data = self.rc4_decrypt(response)
             data2 = json.loads(data)
@@ -71,30 +105,37 @@ class Spider(Spider):
             data2 = json.loads(response)
         classes = []
         for i in data2:
-            if isinstance(i,dict) and i['type_status'] == 1:
+            if isinstance(i, dict) and i['type_status'] == 1:
                 classes.append({'type_id': i['type_en'], 'type_name': i['type_name']})
         return {'class': classes}
 
     def homeVideoContent(self):
-        if not self.pg_url: return None
-        response = self.fetch(f'{self.pg_url}/api.php/{self.base_path}/top?{self.sign()}', headers=self.headers2, verify=False).json()
+        if not self.pg_url:
+            return None
+        response = self.fetch(f'{self.pg_url}/api.php/{self.base_path}/top?{self.sign()}', headers=self.headers2,
+                              verify=False).json()
         videos = self.arr2vods(response['data'])
         return {'list': videos}
 
     def categoryContent(self, tid, pg, filter, extend):
-        if not self.pg_url: return None
-        response = self.fetch(f'{self.pg_url}/api.php/{self.base_path}/vod/?ac=list&class={tid}&page={pg}&{self.sign()}', headers=self.headers2, verify=False).text
+        if not self.pg_url:
+            return None
+        response = self.fetch(
+            f'{self.pg_url}/api.php/{self.base_path}/vod/?ac=list&class={tid}&page={pg}&{self.sign()}',
+            headers=self.headers2, verify=False).text
         try:
             data = self.rc4_decrypt(response)
             data2 = json.loads(data)
         except Exception:
             data2 = json.loads(response)
         videos = self.arr2vods(data2['data'])
-        return {'list': videos,'pagecount':data2['totalpage'], 'page': pg}
+        return {'list': videos, 'pagecount': data2['totalpage'], 'page': pg}
 
     def searchContent(self, key, quick, pg='1'):
-        if not self.pg_url: return None
-        response = self.fetch(f'{self.pg_url}/api.php/{self.base_path}/So/?ac=list&zm={key}&page={pg}&{self.sign()}', headers=self.headers2, verify=False).text
+        if not self.pg_url:
+            return None
+        response = self.fetch(f'{self.pg_url}/api.php/{self.base_path}/So/?ac=list&zm={key}&page={pg}&{self.sign()}',
+                              headers=self.headers2, verify=False).text
         try:
             data = self.rc4_decrypt(response)
             data2 = json.loads(data)
@@ -104,15 +145,20 @@ class Spider(Spider):
         return {'list': videos, 'page': pg}
 
     def detailContent(self, ids):
-        if not self.pg_url: return None
+        if not self.pg_url:
+            return None
         self.client_mode = 0
-        if not self.token: self.auto_logon()
+        if not self.token:
+            self.auto_logon()
         req_data = f'token={self.token}&t={int(time.time())}'
-        payload = {'data': self.rc4_encrypt(req_data),'sign': self.md5(f'{req_data}&{self.pg_key}')}
-        res = self.post(f'{self.yry_url}/api.php?app={self.app_id}&act=motion',data=payload, headers=self.headers2, verify=False).json()
+        payload = {'data': self.rc4_encrypt(req_data), 'sign': self.md5(f'{req_data}&{self.pg_key}')}
+        res = self.post(f'{self.yry_url}/api.php?app={self.app_id}&act=motion', data=payload, headers=self.headers2,
+                        verify=False).json()
         self.client_mode = int(res['msg']['Clientmode'])
-        if self.client_mode == 0 and res['msg']['Try'] != 1: return None
-        response = self.fetch(f'{self.pg_url}/api.php/{self.base_path}/vod/{ids[0]}&{self.sign()}', headers=self.headers2, verify=False).text
+        if self.client_mode == 0 and res['msg']['Try'] != 1:
+            return None
+        response = self.fetch(f'{self.pg_url}/api.php/{self.base_path}/vod/{ids[0]}&{self.sign()}',
+                              headers=self.headers2, verify=False).text
         try:
             data2 = json.loads(response)
         except Exception:
@@ -158,12 +204,12 @@ class Spider(Spider):
         return {'list': [video]}
 
     def playerContent(self, flag, vid, vip_flags):
-        jx,url = 0,''
-        series, raw_url = vid.split('@',1)
+        jx, url = 0, ''
+        series, raw_url = vid.split('@', 1)
         self.client_mode = 1
         base_path = f'&account={self.user}&password={self.pwd}&series={series}&edition=1.0'
         cont = 0
-        for i in range(1,4):
+        for i in range(1, 4):
             if cont > self.max_client:
                 break
             try:
@@ -173,10 +219,11 @@ class Spider(Spider):
                     else:
                         path = f'{self.client}{i}/?url={raw_url}'
                     if self.client_mode == 1:
-                        payload = {'app': self.app_id,'key': self.rc4_encrypt(base_path),'':''}
+                        payload = {'app': self.app_id, 'key': self.rc4_encrypt(base_path), '': ''}
                         response = self.post(path, data=payload, headers=self.headers2, verify=False).text
                     else:
-                        response = self.post(f'{path}&app={self.app_id}{base_path}', headers=self.headers2, verify=False).text
+                        response = self.post(f'{path}&app={self.app_id}{base_path}', headers=self.headers2,
+                                             verify=False).text
                     try:
                         data = self.rc4_decrypt(response)
                         data2 = json.loads(data)
@@ -199,10 +246,11 @@ class Spider(Spider):
                     jx, url = 1, play_url
             except Exception:
                 pass
-        return { 'jx': jx, 'parse': 0, 'url': url, 'header': {'User-Agent':'Windows'}}
+        return {'jx': jx, 'parse': 0, 'url': url, 'header': {'User-Agent': 'Windows'}}
 
     def auto_logon(self):
-        if not self.pg_url: return
+        if not self.pg_url:
+            return
         if self.user and self.pwd and self.markcode:
             user, pwd, markcode = self.user, self.pwd, self.markcode
         else:
@@ -226,11 +274,13 @@ class Spider(Spider):
                 self.setCache(account_cache_key, {'username': user, 'password': pwd, 'markcode': markcode})
         self.login(user, pwd, markcode)
 
-    def login(self, user,pwd,markcode):
-        if not self.pg_url: return
+    def login(self, user, pwd, markcode):
+        if not self.pg_url:
+            return
         req_data = f'account={user}&password={pwd}&markcode={markcode}&t={int(time.time())}'
-        payload = {'data': self.rc4_encrypt(req_data),'sign': self.md5(f'{req_data}&{self.pg_key}')}
-        response = self.post(f'{self.yry_url}/api.php?app={self.app_id}&act=user_logon', data=payload, headers=self.headers2, verify=False).json()
+        payload = {'data': self.rc4_encrypt(req_data), 'sign': self.md5(f'{req_data}&{self.pg_key}')}
+        response = self.post(f'{self.yry_url}/api.php?app={self.app_id}&act=user_logon', data=payload,
+                             headers=self.headers2, verify=False).json()
         msg = response['msg']
         try:
             data = self.rc4_decrypt(msg, self.yry_key)
@@ -241,16 +291,18 @@ class Spider(Spider):
         self.user = user
         self.pwd = pwd
 
-    def register(self, user,pwd,markcode):
-        if not self.pg_url: return
+    def register(self, user, pwd, markcode):
+        if not self.pg_url:
+            return
         user_host = self.fetch(f'{self.yry_url}/ip.json', headers=self.headers).text
         req_data = f'user={user}&password={pwd}&markcode={markcode}&t={int(time.time())}&name={self.app_name}&phone={self.model}'
-        payload = {'data': self.rc4_encrypt(req_data),'sign': self.md5(f'{req_data}&{self.pg_key}')}
-        self.post(f'http://{user_host}/api.php?app={self.app_id}&act=user_reg', data=payload, headers=self.headers2, verify=False)
+        payload = {'data': self.rc4_encrypt(req_data), 'sign': self.md5(f'{req_data}&{self.pg_key}')}
+        self.post(f'http://{user_host}/api.php?app={self.app_id}&act=user_reg', data=payload, headers=self.headers2,
+                  verify=False)
 
     def arr2vods(self, arr):
         videos = []
-        if isinstance(arr,list):
+        if isinstance(arr, list):
             for i in arr:
                 videos.append({
                     'vod_id': i.get('tjurl', i.get('nextlink')),
@@ -262,15 +314,17 @@ class Spider(Spider):
         return videos
 
     def rc4_encrypt(self, plaintext, key=None):
-        if not key: key = self.yry_key
+        if not key:
+            key = self.yry_key
         key_bytes = key.encode('utf-8')
         plaintext_bytes = plaintext.encode('utf-8')
         cipher = ARC4.new(key_bytes)
         ciphertext = cipher.encrypt(plaintext_bytes)
         return binascii.hexlify(ciphertext).decode('utf-8')
 
-    def rc4_decrypt(self,ciphertext_hex, key=None):
-        if not key: key = self.pg_key
+    def rc4_decrypt(self, ciphertext_hex, key=None):
+        if not key:
+            key = self.pg_key
         key_bytes = key.encode('utf-8')
         ciphertext_bytes = binascii.unhexlify(ciphertext_hex)
         cipher = ARC4.new(key_bytes)
